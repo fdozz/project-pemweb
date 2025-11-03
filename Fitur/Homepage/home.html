@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CINEWAVE | Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">CINE<span class="accent">WAVE</span></div>
+    <nav class="nav">
+      <a href="#" class="active">Home</a>
+      <a href="#">Movies</a>
+      <a href="#">TV Series</a>
+      <a href="#">Trending</a>
+      <a href="#">Watchlist</a>
+    </nav>
+  </header>
+
+  <main class="homepage">
+    <!-- Trending Movie Banner -->
+        <!-- Hero Banner Carousel -->
+        <section class="hero-main">
+  <div class="hero-slide active">
+    <video src="assets/movies/starwars.mp4" autoplay muted loop playsinline></video>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-info">
+      <h1>Star Wars: The Force Awakens</h1>
+      <p>Thirty years after the defeat of the Galactic Empire, a new threat rises in the form of the First Order.</p>
+      <div class="hero-buttons">
+        <button class="button-primary">▶ Watch Trailer</button>
+        <button class="button-outline">＋ Add to Watchlist</button>
+        <button class="button-info" data-movie="starwars">ℹ More Info</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <div class="hero-slide" data-movie="avengers">
+        <img src="assets/movies/avengers.webp" alt="Avengers" class="hero-banner" />
+        <div class="hero-info">
+            <h1>Avengers: Endgame</h1>
+            <p>
+            After the devastating events of Infinity War, the Avengers assemble once more to reverse Thanos’ actions.
+            </p>
+            <div class="hero-buttons">
+            <button class="button-primary">▶ Watch Trailer</button>
+            <button class="button-outline">＋ Add to Watchlist</button>
+            <button class="button-info" data-movie="avengers">ℹ More Info</button>
+            </div>
+    </div>
+</div>
+
+    <div class="hero-slide" data-movie="dune">
+      <img src="assets/movies/dune.webp" alt="Dune 2" class="hero-banner" />
+      <div class="hero-info">
+        <h1>Dune: Part Two</h1>
+        <p>
+          Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators.
+        </p>
+        <div class="hero-buttons">
+          <button class="button-primary">▶ Watch Trailer</button>
+          <button class="button-outline">＋ Add to Watchlist</button>
+          <button class="button-info" data-movie="dune">ℹ More Info</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide" data-movie="spiderman">
+      <img src="assets/movies/spiderman.webp" alt="Spider-Man" class="hero-banner" />
+      <div class="hero-info">
+        <h1>Spider-Man: No Way Home</h1>
+        <p>
+          With Spider-Man’s identity now revealed, Peter seeks help from Doctor Strange, but chaos erupts across universes.
+        </p>
+        <div class="hero-buttons">
+          <button class="button-primary">▶ Watch Trailer</button>
+          <button class="button-outline">＋ Add to Watchlist</button>
+          <button class="button-info" data-movie="spiderman">ℹ More Info</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide" data-movie="interstellar">
+      <img src="assets/movies/interstellar.jpg" alt="Interstellar" class="hero-banner" />
+      <div class="hero-info">
+        <h1>Interstellar</h1>
+        <p>
+          A group of explorers travel through a wormhole in space in an attempt to ensure humanity’s survival.
+        </p>
+        <div class="hero-buttons">
+          <button class="button-primary">▶ Watch Trailer</button>
+          <button class="button-outline">＋ Add to Watchlist</button>
+          <button class="button-info" data-movie="interstellar">ℹ More Info</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="hero-nav prev">‹</button>
+  <button class="hero-nav next">›</button>
+</section>
+
+<!-- Modal container -->
+<div class="info-modal" id="infoModal">
+  <div class="info-content">
+    <span class="close-btn" onclick="closeInfo()">✖</span>
+    <div id="infoDetails"><!-- dynamic movie content goes here --></div>
+  </div>
+</div>
+
+    <!-- Platform List -->
+    <section class="platforms">
+      <img src="assets/logo/Disney+.svg" alt="Disney+" />
+      <img src="assets/logo/Netflix.svg" alt="Netflix" />
+      <img src="assets/logo/hbo.svg" alt="HBO Max" />
+      <img src="assets/logo/apple.svg" alt="Marvel" />
+      <img src="assets/logo/prime.svg" alt="Star Wars" />
+    </section>
+
+    <!-- Continue Watching -->
+    <section class="movie-section">
+      <h2>Continue Watching</h2>
+      <div class="movie-row">
+        <div class="movie-card hoverable">
+          <img src="assets/movies/dune2.webp" alt="Dune Part Two" />
+          <div class="hover-details">
+            <button class="play">▶</button>
+            <div class="progress-bar"><div style="width: 70%"></div></div>
+            <div class="hover-actions">
+              <button>＋</button>
+              <button>ℹ</button>
+              <button>✖</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card hoverable">
+          <img src="assets/movies/insideout2.webp" alt="Inside Out 2" />
+          <div class="hover-details">
+            <button class="play">▶</button>
+            <div class="progress-bar"><div style="width: 45%"></div></div>
+            <div class="hover-actions">
+              <button>＋</button>
+              <button>ℹ</button>
+              <button>✖</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trending Section -->
+    <section class="movie-section">
+      <div class="section-header">
+        <h2>What's Trending</h2>
+        <div class="controls">
+          <button class="control-btn">‹</button>
+          <button class="control-btn">›</button>
+        </div>
+      </div>
+      <div class="movie-row">
+        <div class="movie-card"><img src="assets/movies/avengers2.webp" alt="Avengers Endgame" /></div>
+        <div class="movie-card"><img src="assets/movies/barbie.webp" alt="Barbie" /></div>
+        <div class="movie-card"><img src="assets/movies/oppenheimer.webp" alt="Oppenheimer" /></div>
+        <div class="movie-card"><img src="assets/movies/joker.webp" alt="Joker" /></div>
+        <div class="movie-card"><img src="assets/movies/demonslayer.webp" alt="Demon Slayer" /></div>
+        <div class="movie-card"><img src="assets/movies/chainsaw.webp" alt="chainsaw" /></div>
+        <div class="movie-card"><img src="assets/movies/kpop.webp" alt="kpop" /></div>
+        <div class="movie-card"><img src="assets/movies/dark.webp" alt="dark" /></div>
+        <div class="movie-card"><img src="assets/movies/beautifulboy.webp" alt="beautifulboy" /></div>
+        <div class="movie-card"><img src="assets/movies/monster.webp" alt="monster" /></div>
+        <div class="movie-card"><img src="assets/movies/dahmer.webp" alt="dahmer" /></div>
+      </div>
+    </section>
+
+        <!-- New Releases -->
+    <section class="movie-section">
+      <div class="section-header">
+        <h2>New Releases</h2>
+        <div class="controls">
+          <button class="control-btn">‹</button>
+          <button class="control-btn">›</button>
+        </div>
+      </div>
+      <div class="movie-row">
+        <div class="movie-card hoverable">
+          <img src="assets/movies/godzilla.webp" alt="Godzilla x Kong" />
+          <div class="hover-details">
+            <button class="play">▶</button>
+            <div class="progress-bar"><div style="width: 25%"></div></div>
+            <div class="hover-actions">
+              <button>＋</button>
+              <button>ℹ</button>
+              <button>✖</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card hoverable">
+          <img src="assets/movies/moana2.webp" alt="Moana 2" />
+          <div class="hover-details">
+            <button class="play">▶</button>
+            <div class="progress-bar"><div style="width: 0%"></div></div>
+            <div class="hover-actions">
+              <button>＋</button>
+              <button>ℹ</button>
+              <button>✖</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card hoverable">
+          <img src="assets/movies/sonic3.webp" alt="Sonic the Hedgehog 3" />
+          <div class="hover-details">
+            <button class="play">▶</button>
+            <div class="progress-bar"><div style="width: 0%"></div></div>
+            <div class="hover-actions">
+              <button>＋</button>
+              <button>ℹ</button>
+              <button>✖</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular TV Shows -->
+    <section class="movie-section">
+      <div class="section-header">
+        <h2>Popular TV Shows</h2>
+        <div class="controls">
+          <button class="control-btn">‹</button>
+          <button class="control-btn">›</button>
+        </div>
+      </div>
+      <div class="movie-row">
+        <div class="movie-card hoverable">
+          <img src="assets/movies/wednesday.webp" alt="Wednesday" />
+          <div class="hover-details">
+            <button class="play">▶</button>
+            <div class="hover-actions">
+              <button>＋</button>
+              <button>ℹ</button>
+              <button>✖</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card hoverable">
+          <img src="assets/movies/theboys.webp" alt="The Boys" />
+          <div class="hover-details">
+            <button class="play">▶</button>
+            <div class="hover-actions">
+              <button>＋</button>
+              <button>ℹ</button>
+              <button>✖</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card hoverable">
+          <img src="assets/movies/onepiece.webp" alt="One Piece Live Action" />
+          <div class="hover-details">
+            <button class="play">▶</button>
+            <div class="hover-actions">
+              <button>＋</button>
+              <button>ℹ</button>
+              <button>✖</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Movies -->
+    <section class="movie-section">
+      <div class="section-header">
+        <h2>Popular Movies</h2>
+        <div class="controls">
+          <button class="control-btn">‹</button>
+          <button class="control-btn">›</button>
+        </div>
+      </div>
+      <div class="movie-row">
+        <div class="movie-card hoverable">
+          <img src="assets/movies/joker2.webp" alt="Joker: Folie à Deux" />
+          <div class="hover-details">
+            <button class="play">▶</button>
+            <div class="hover-actions">
+              <button>＋</button>
+              <button>ℹ</button>
+              <button>✖</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card hoverable">
+          <img src="assets/movies/avatar2.webp" alt="Avatar: The Way of Water" />
+          <div class="hover-details">
+            <button class="play">▶</button>
+            <div class="hover-actions">
+              <button>＋</button>
+              <button>ℹ</button>
+              <button>✖</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card hoverable">
+          <img src="assets/movies/topgun.webp" alt="Top Gun Maverick" />
+          <div class="hover-details">
+            <button class="play">▶</button>
+            <div class="hover-actions">
+              <button>＋</button>
+              <button>ℹ</button>
+              <button>✖</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recommended for You -->
+    <section class="movie-section">
+      <div class="section-header">
+        <h2>Recommended for You</h2>
+        <div class="controls">
+          <button class="control-btn">‹</button>
+          <button class="control-btn">›</button>
+        </div>
+      </div>
+      <div class="movie-row">
+        <div class="movie-card hoverable">
+          <img src="assets/movies/interstellar2.webp" alt="Interstellar" />
+          <div class="hover-details">
+            <button class="play">▶</button>
+            <div class="hover-actions">
+              <button>＋</button>
+              <button>ℹ</button>
+              <button>✖</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card hoverable">
+          <img src="assets/movies/inception.webp" alt="Inception" />
+          <div class="hover-details">
+            <button class="play">▶</button>
+            <div class="hover-actions">
+              <button>＋</button>
+              <button>ℹ</button>
+              <button>✖</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie-card hoverable">
+          <img src="assets/movies/oppenheimer2.webp" alt="Oppenheimer" />
+          <div class="hover-details">
+            <button class="play">▶</button>
+            <div class="hover-actions">
+              <button>＋</button>
+              <button>ℹ</button>
+              <button>✖</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 CINEWAVE. Watch. Discuss. Enjoy.</p>
+  </footer>
+
+<!-- More Info Modal -->
+<div class="info-modal" id="infoModal">
+  <div class="info-content">
+    <span class="close-btn" onclick="closeInfo()">✖</span>
+    <h2>Star Wars: The Force Awakens</h2>
+    <p>
+      <strong>Genre:</strong> Action, Sci-Fi, Adventure<br />
+      <strong>Duration:</strong> 2h 18m<br />
+      <strong>Release:</strong> 2015
+    </p>
+    <p class="synopsis">
+      The Force Awakens is the first film in the Star Wars sequel trilogy. 
+      It follows Rey, a scavenger who discovers her connection to the Force, 
+      and joins the fight against the First Order alongside Finn and Han Solo.
+    </p>
+
+    <h3>Cast</h3>
+    <div class="cast-list">
+      <img src="assets/cast/daisy.webp" alt="Daisy Ridley" />
+      <img src="assets/cast/john.jpg" alt="John Boyega" />
+      <img src="assets/cast/adam.jpg" alt="Adam Driver" />
+    </div>
+
+<section class="carousel-section">
+  <h2>You Might Also Like</h2>
+  <div class="carousel-container">
+    <button class="carousel-btn prev">❮</button>
+    <div class="carousel">
+      <img src="assets/movies/movie1.jpg" alt="Movie 1">
+      <img src="assets/movies/movie2.jpg" alt="Movie 2">
+      <img src="assets/movies/movie3.jpg" alt="Movie 3">
+      <img src="assets/movies/movie4.jpg" alt="Movie 4">
+      <img src="assets/movies/movie5.jpg" alt="Movie 5">
+    </div>
+    <button class="carousel-btn next">❯</button>
+  </div>
+</section>
+
+</div>
+</body>
+</html>
