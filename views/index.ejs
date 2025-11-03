@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+    <title>Nontonmantap - Platform Streaming Terbaik</title>
+    <meta name="description" content="Nikmati film dan serial terbaru dengan kualitas HD di Nontonmantap" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand">
+        <div class="logo">🎬 Nontonmantap</div>
+      </div>
+      <div class="nav-links">
+        <% if (user) { %>
+          <a href="/" class="hide-mobile">Beranda</a>
+          <a class="profile-link" href="/profile">👤 <span class="hide-mobile"><%= user.name || user.email %></span><span class="show-mobile">Profil</span></a>
+          <a href="/logout">Keluar</a>
+        <% } else { %>
+          <a href="/login">Masuk</a>
+          <a href="/register">Daftar</a>
+        <% } %>
+      </div>
+    </header>
+
+    <% const featured = movies.find(m => m.is_latest) || movies[0]; %>
+    <% let featuredThumb = 'https://image.tmdb.org/t/p/original/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg';
+       if (featured && featured.thumbnail) {
+         featuredThumb = featured.thumbnail.replace('/w500/', '/original/');
+       }
+    %>
+    <section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('<%= featuredThumb %>')">
+      <div class="hero-content">
+        <% if (featured) { %>
+          <h1><%= featured.title %></h1>
+          <p><%= featured.synopsis %></p>
+          <div class="actions">
+            <a class="btn play" href="/movie/<%= featured.id %>">▶️ Tonton Sekarang</a>
+
+            <a class="btn info" href="/movie/<%= featured.id %>">ℹ️ Info Selengkapnya</a>
+          </div>
+        <% } %>
+      </div>
+    </section>
+
+    <main>
+      <div class="content-wrap">
+        <!-- Film Terbaru -->
+        <% const latestMovies = movies.filter(m => m.is_latest); %>
+        <% if (latestMovies.length > 0) { %>
+          <section class="row">
+            <h3>🔥 Film Terbaru</h3>
+            <div class="carousel">
+              <% latestMovies.forEach(m => { %>
+                <div class="card" data-preview="<%= m.preview_url %>" onclick="window.location.href='/movie/<%= m.id %>'">
+                  <img src="<%= m.thumbnail %>" alt="<%= m.title %>" loading="lazy" class="card-thumbnail" />
+                  <iframe class="card-preview" src="" frameborder="0" style="display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; border-radius: 8px;"></iframe>
+                  <div class="meta">
+                    <strong><%= m.title %></strong>
+                    <div style="font-size: 0.8rem; opacity: 0.8; margin-top: 4px;"><%= m.genre %></div>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+          </section>
+        <% } %>
+
+        <!-- Berdasarkan Genre -->
+        <% const genres = {}; movies.forEach(m => { 
+           const genre = m.genre || 'Lainnya'; 
+           genres[genre] = genres[genre] || []; 
+           genres[genre].push(m); 
+        }); %>
+        
+        <% const genreIcons = {
+           'Action': '💥',
+           'Sci-Fi': '🚀',
+           'Animation': '🎨',
+           'Biography': '📚',
+           'Comedy': '😂',
+           'Drama': '🎭',
+           'Fantasy': '🧙‍♂️'
+        }; %>
+        
+        <% for (const [genreName, genreMovies] of Object.entries(genres)) { %>
+          <section class="row">
+            <h3><%= genreIcons[genreName] || '🎬' %> <%= genreName %></h3>
+            <div class="carousel">
+              <% genreMovies.forEach(m => { %>
+                <div class="card" data-preview="<%= m.preview_url %>" onclick="window.location.href='/movie/<%= m.id %>'">
+                  <img src="<%= m.thumbnail %>" alt="<%= m.title %>" loading="lazy" class="card-thumbnail" />
+                  <iframe class="card-preview" src="" frameborder="0" style="display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; border-radius: 8px;"></iframe>
+                  <div class="meta">
+                    <strong><%= m.title %></strong>
+                    <div style="font-size: 0.8rem; opacity: 0.8; margin-top: 4px;">⭐ <%= Math.floor(Math.random() * 2) + 8 %>.<%= Math.floor(Math.random() * 10) %>/10</div>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+          </section>
+        <% } %>
+      </div>
+    </main>
+
+
+
+    <footer class="footer">
+      <p>🎬 <strong>Nontonmantap</strong> - Platform Streaming Terbaik Indonesia</p>
+      <p style="margin-top: 0.5rem; opacity: 0.7;">Dibuat dengan ❤️ untuk pengalaman menonton yang luar biasa</p>
+    </footer>
+
+    <script src="/app.js"></script>
+    <script>
+
+      
+      // Card hover preview functionality
+      document.querySelectorAll('.card').forEach(card => {
+        let hoverTimeout;
+        const thumbnail = card.querySelector('.card-thumbnail');
+        const preview = card.querySelector('.card-preview');
+        const previewUrl = card.dataset.preview;
+        
+        card.addEventListener('mouseenter', () => {
+          card.style.zIndex = '10';
+          
+          // Start preview after 1.5 seconds hover
+          if (previewUrl && preview && thumbnail) {
+            hoverTimeout = setTimeout(() => {
+              thumbnail.style.opacity = '0';
+              preview.style.display = 'block';
+              preview.src = previewUrl;
+            }, 1500);
+          }
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.zIndex = '1';
+          
+          // Clear timeout and hide preview
+          if (hoverTimeout) {
+            clearTimeout(hoverTimeout);
+          }
+          
+          if (preview && thumbnail) {
+            thumbnail.style.opacity = '1';
+            preview.style.display = 'none';
+            preview.src = '';
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

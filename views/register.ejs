@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+    <title>Daftar - Nontonmantap</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body style="background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); min-height: 100vh;">
+    <header class="navbar" style="background: rgba(0,0,0,0.2);">
+      <div class="brand">
+        <div class="logo">🎬 Nontonmantap</div>
+      </div>
+      <div class="nav-links">
+        <a href="/login">Masuk</a>
+      </div>
+    </header>
+
+    <main class="register-main" style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 2rem;">
+      <div class="register-card" style="max-width: 420px; width: 100%; background: rgba(0,0,0,0.8); padding: 2.5rem; border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1);">
+        <div class="register-header" style="text-align: center; margin-bottom: 2rem;">
+          <div class="register-icon" style="font-size: 3rem; margin-bottom: 1rem;">🎆</div>
+          <h2 class="register-title" style="margin: 0; font-size: 1.8rem; font-weight: 700;">Bergabung dengan Kami!</h2>
+          <p class="register-subtitle" style="color: var(--text-secondary); margin-top: 0.5rem;">Buat akun untuk menikmati ribuan film</p>
+        </div>
+        
+        <% if (error) { %>
+          <div style="background: rgba(229, 9, 20, 0.2); border: 1px solid rgba(229, 9, 20, 0.5); color: #ff6b6b; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; text-align: center;">
+            ⚠️ <%= error %>
+          </div>
+        <% } %>
+        
+        <form method="post" action="/register" style="space-y: 1.5rem;">
+          <div class="form-group" style="margin-bottom: 1.5rem;">
+            <label class="form-label" style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: 500;">
+              👤 Nama Lengkap
+            </label>
+            <input 
+              class="form-input" 
+              style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: var(--text-primary); font-size: 1rem; transition: var(--transition);" 
+              type="text" 
+              name="name" 
+              placeholder="Masukkan nama lengkap Anda"
+              onfocus="this.style.borderColor='var(--accent-blue)'; this.style.boxShadow='0 0 0 2px rgba(0,112,243,0.2)'"
+              onblur="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.boxShadow='none'"
+            >
+          </div>
+          
+          <div class="form-group" style="margin-bottom: 1.5rem;">
+            <label class="form-label" style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: 500;">
+              📧 Email
+            </label>
+            <input 
+              class="form-input" 
+              style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: var(--text-primary); font-size: 1rem; transition: var(--transition);" 
+              type="email" 
+              name="email" 
+              required 
+              placeholder="contoh@email.com"
+              onfocus="this.style.borderColor='var(--accent-blue)'; this.style.boxShadow='0 0 0 2px rgba(0,112,243,0.2)'"
+              onblur="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.boxShadow='none'"
+            >
+          </div>
+          
+          <div class="form-group" style="margin-bottom: 2rem;">
+            <label class="form-label" style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: 500;">
+              🔒 Password
+            </label>
+            <input 
+              class="form-input" 
+              style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: var(--text-primary); font-size: 1rem; transition: var(--transition);" 
+              type="password" 
+              name="password" 
+              required 
+              placeholder="Minimal 6 karakter"
+              minlength="6"
+              onfocus="this.style.borderColor='var(--accent-blue)'; this.style.boxShadow='0 0 0 2px rgba(0,112,243,0.2)'"
+              onblur="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.boxShadow='none'"
+            >
+          </div>
+          
+          <button 
+            class="btn register-btn" 
+            type="submit" 
+            style="width: 100%; background: var(--accent-gradient); color: white; font-weight: 600; font-size: 1rem; padding: 1rem; border: none; border-radius: 8px; cursor: pointer; transition: var(--transition);"
+            onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(118,75,162,0.3)'"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
+          >
+            🎆 Buat Akun Sekarang
+          </button>
+        </form>
+        
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+          <div style="background: rgba(0,112,243,0.1); border: 1px solid rgba(0,112,243,0.3); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+            <p style="margin: 0; color: var(--text-secondary); font-size: 0.9rem; text-align: center;">
+              ✨ <strong>Gratis selamanya!</strong><br>
+              Nikmati ribuan film dan serial tanpa biaya berlangganan
+            </p>
+          </div>
+          
+          <p style="color: var(--text-muted); font-size: 0.9rem; text-align: center; margin: 0;">
+            Sudah punya akun? 
+            <a href="/login" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">
+              Masuk di sini →
+            </a>
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+    <title><%= movie.title %> - Nontonmantap</title>
+    <meta name="description" content="Tonton <%= movie.title %> - <%= movie.synopsis %>" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand">
+        <div class="logo">🎬 Nontonmantap</div>
+      </div>
+      <div class="nav-links">
+        <a href="/"><span class="hide-mobile">← Kembali</span><span class="show-mobile">←</span></a>
+        <% if (user) { %>
+          <a class="profile-link" href="/profile">👤 <%= user.name || user.email %></a>
+          <a href="/logout">Keluar</a>
+        <% } else { %>
+          <a href="/login">Masuk</a>
+        <% } %>
+      </div>
+    </header>
+
+    <main>
+      <div class="content-wrap">
+        <!-- Movie Header -->
+        <div class="movie-header" style="background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('<%= movie.thumbnail %>'); background-size: cover; background-position: center; padding: 3rem 2rem; border-radius: 12px; margin: 2rem 0; position: relative;">
+          <div class="movie-header-content" style="max-width: 600px;">
+            <h1 class="movie-title" style="font-size: 2.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);"><%= movie.title %></h1>
+            <div class="movie-badges" style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+              <span style="background: var(--accent-gradient); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;"><%= movie.genre %></span>
+              <span style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">⭐ <%= Math.floor(Math.random() * 2) + 8 %>.<%= Math.floor(Math.random() * 10) %>/10</span>
+              <span style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">🔥 Trending</span>
+            </div>
+            <p class="movie-synopsis" style="font-size: 1.1rem; line-height: 1.6; color: var(--text-secondary); text-shadow: 1px 1px 2px rgba(0,0,0,0.8);"><%= movie.synopsis %></p>
+          </div>
+        </div>
+
+        <!-- Video Player Section -->
+        <section class="row">
+          <div class="movie-player">
+            <div style="background: var(--bg-card); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);">
+              <div class="movie-controls" style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                <button id="play-movie" class="btn play" onclick="showMovie()">▶️ Tonton Film</button>
+                <% if (movie.trailer_url) { %>
+                  <button id="show-trailer" class="btn info" onclick="showTrailer()">🎥 Lihat Trailer</button>
+                <% } %>
+              </div>
+              
+              <!-- Movie Player -->
+              <div id="movie-container" class="video-container" style="display: none;">
+                <iframe id="player" width="100%" height="480" src="" title="<%= movie.title %>" frameborder="0" allowfullscreen style="border-radius: 8px;"></iframe>
+              </div>
+              
+              <!-- Trailer Player -->
+              <% if (movie.trailer_url) { %>
+                <div id="trailer-container" class="video-container" style="display: none;">
+                  <iframe id="trailer-iframe" width="100%" height="480" src="" title="Trailer <%= movie.title %>" frameborder="0" allowfullscreen style="border-radius: 8px;"></iframe>
+                </div>
+              <% } %>
+
+              
+              <!-- Default Poster -->
+              <div id="poster-container" class="poster-container" style="position: relative;">
+                <img src="<%= movie.thumbnail %>" alt="<%= movie.title %>" style="width: 100%; border-radius: 8px; opacity: 0.8;" />
+                <div class="poster-overlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                  <div class="play-icon" style="font-size: 4rem; margin-bottom: 1rem;">▶️</div>
+                  <p class="play-text" style="font-size: 1.2rem; font-weight: 600;">Klik tombol di atas untuk mulai menonton</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Comments Section -->
+        <section class="comments">
+          <h3>💬 Komentar & Ulasan</h3>
+          
+          <% if (user) { %>
+            <div style="background: var(--bg-card); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem;">
+              <form method="post" action="/movie/<%= movie.id %>/comment">
+                <textarea name="content" rows="4" required placeholder="Bagikan pendapat Anda tentang film ini..." style="margin-bottom: 1rem;"></textarea>
+                <button class="btn info" type="submit">📝 Kirim Komentar</button>
+              </form>
+            </div>
+          <% } else { %>
+            <div style="background: var(--bg-card); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; text-align: center;">
+              <p>🔒 <a href="/login" style="color: var(--accent-blue);">Masuk</a> untuk menulis komentar dan berbagi pendapat Anda!</p>
+            </div>
+          <% } %>
+
+          <div style="space-y: 1rem;">
+            <% if (comments.length === 0) { %>
+              <div style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🙊</div>
+                <p>Belum ada komentar. Jadilah yang pertama!</p>
+              </div>
+            <% } else { %>
+              <% comments.forEach((c, index) => { %>
+                <div class="comment" style="animation: fadeInUp 0.5s ease-out <%= index * 0.1 %>s both;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <strong style="color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;">
+                      👤 <%= c.name || 'Pengguna Anonim' %>
+                    </strong>
+                    <em style="color: var(--text-muted); font-size: 0.9rem;">
+                      🕰️ <%= new Date(c.created_at).toLocaleDateString('id-ID', { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                      }) %>
+                    </em>
+                  </div>
+                  <p style="color: var(--text-secondary); line-height: 1.6;"><%= c.content %></p>
+                </div>
+              <% }) %>
+            <% } %>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>🎬 <strong>Nontonmantap</strong> - Platform Streaming Terbaik Indonesia</p>
+    </footer>
+
+    <script src="/app.js"></script>
+    <script>
+      function showMovie() {
+        document.getElementById('movie-container').style.display = 'block';
+        document.getElementById('trailer-container').style.display = 'none';
+        document.getElementById('poster-container').style.display = 'none';
+        
+        // Load movie
+        const movieIframe = document.getElementById('player');
+        movieIframe.src = '<%= movie.video_url %>&autoplay=1';
+        
+        // Update button states
+        document.getElementById('play-movie').style.background = 'var(--accent-gradient)';
+        const trailerBtn = document.getElementById('show-trailer');
+        if (trailerBtn) {
+          trailerBtn.style.background = 'rgba(255,255,255,0.2)';
+        }
+      }
+      
+      function showTrailer() {
+        document.getElementById('trailer-container').style.display = 'block';
+        document.getElementById('movie-container').style.display = 'none';
+        document.getElementById('poster-container').style.display = 'none';
+        
+        // Load trailer
+        const trailerIframe = document.getElementById('trailer-iframe');
+        trailerIframe.src = '<%= movie.trailer_url %>&autoplay=1';
+        
+        // Stop movie if playing
+        const movieIframe = document.getElementById('player');
+        if (movieIframe) {
+          movieIframe.src = '';
+        }
+        
+        // Update button states
+        document.getElementById('show-trailer').style.background = 'var(--accent-gradient)';
+        document.getElementById('play-movie').style.background = 'rgba(255,255,255,0.2)';
+      }
+      
+
+    </script>
+  </body>
+</html>
