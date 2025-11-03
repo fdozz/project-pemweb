@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CINEWAVE | User Profile</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+   <header class="header">
+    <div class="logo">CINE<span class="accent">WAVE</span></div>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="#">Movies</a>
+      <a href="#">TV Series</a>
+      <a href="#">Trending</a>
+      <a href="#">Watchlist</a>
+      <img src="assets/user_001.png" alt="User Profile" class="user-avatar" id="topAvatar" />
+    </nav>
+  </header>
+
+  <main class="profile-container">
+    <div class="profile-info">
+      <img src="assets/user_001.png" alt="User Avatar" class="profile-photo" id="mainAvatar" />
+      <div class="profile-text">
+        <h2>User</h2>
+        <p>@user_666</p>
+      </div>
+      <button class="edit-btn">Edit Profile</button>
+    </div>
+
+    <div class="profile-tabs">
+      <a href="#" class="active">History</a>
+      <a href="#">Wishlist</a>
+      <a href="#">Recommendations</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 CINEWAVE. Watch. Discuss. Enjoy.</p>
+  </footer>
+
+  <script>
+    const topAvatar = document.getElementById('topAvatar');
+    const mainAvatar = document.getElementById('mainAvatar');
+    mainAvatar.src = topAvatar.src;
+  </script>
+</body>
+</html>

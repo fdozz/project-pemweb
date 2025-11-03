@@ -1,0 +1,162 @@
+:root {
+  --primary: #0F4C4C;
+  --accent: #FF6B6B;
+  --text: #222222;
+  --bg: #FFFFFF;
+  --muted: #b8b8b8;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", "Inter", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 80px;
+  background: linear-gradient(90deg, var(--primary), #0b3b3b);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  color: #FFFFFF;
+}
+
+.logo .accent {
+  color: var(--accent);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: var(--accent);
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  object-fit: cover;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.user-avatar:hover {
+  transform: scale(1.1);
+}
+
+.profile-container {
+  max-width: 850px;
+  margin: 100px auto 60px;
+  text-align: center;
+  padding: 20px;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.profile-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 600;
+  box-shadow: 0 0 0 4px var(--primary);
+}
+
+.profile-text h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.profile-text p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.edit-btn {
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.edit-btn:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.profile-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  margin-bottom: 50px;
+}
+
+.profile-tabs a {
+  text-decoration: none;
+  color: var(--muted);
+  padding-bottom: 10px;
+  font-weight: 600;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.profile-tabs a:hover {
+  color: var(--accent);
+}
+
+.profile-tabs a.active {
+  color: var(--accent);
+  border-bottom: 3px solid var(--accent);
+}
+
+.footer {
+  text-align: center;
+  padding: 30px;
+  background: var(--primary);
+  color: white;
+  font-size: 0.9rem;
+  margin-top: 60px;
+}
