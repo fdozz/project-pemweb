@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CINEWAVE | Settings</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo">CINE<span class="accent">WAVE</span></div>
+    <nav class="nav">
+      <a href="../Homepage/index.html" class="nav-link">Home</a>
+      <a href="#">Movies</a>
+      <a href="#">TV Series</a>
+      <a href="#">Trending</a>
+      <a href="#">Watchlist</a>
+      <div class="avatar-dropdown">
+        <img src="assets/user_001.png" alt="User Profile" class="user-avatar" id="topAvatar" />
+        <div class="dropdown-menu" id="avatarDropdown">
+          <a href="hal_user_settings.html" class="active">Settings</a>
+          <a href="#">Log Out</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="settings-container">
+    <h2>User Settings</h2>
+
+    <form class="settings-form">
+      <div class="form-group">
+        <label for="theme">Theme</label>
+        <select id="theme">
+          <option value="light">Light Mode</option>
+          <option value="dark">Dark Mode</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="language">Language</label>
+        <select id="language">
+          <option value="en">English</option>
+          <option value="id">Bahasa Indonesia</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="notifications">Notifications</label>
+        <div class="switch">
+          <input type="checkbox" id="notifications" checked />
+          <label for="notifications"></label>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="save-btn">Save Settings</button>
+        <button type="button" class="cancel-btn" onclick="location.href='hal_user.html'">Cancel</button>
+      </div>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 CINEWAVE. Watch. Discuss. Enjoy.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

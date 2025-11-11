@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CINEWAVE | User Profile</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo">CINE<span class="accent">WAVE</span></div>
+    <nav class="nav">
+      <a href="../Homepage/index.html" class="nav-link">Home</a>
+      <a href="#">Movies</a>
+      <a href="#">TV Series</a>
+      <a href="#">Trending</a>
+      <a href="#">Watchlist</a>
+      <div class="avatar-dropdown">
+        <img src="assets/user_001.png" alt="User Profile" class="user-avatar" id="topAvatar" />
+        <div class="dropdown-menu" id="avatarDropdown">
+          <a href="hal_user_settings.html">Settings</a>
+          <a href="../Login-Register Page/Login.html">Log Out</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="profile-container">
+    <div class="profile-info">
+      <img src="assets/user_001.png" alt="User Avatar" class="profile-photo" id="mainAvatar" />
+      <div class="profile-text">
+        <h2>User</h2>
+        <p>@user_666</p>
+      </div>
+      <button class="edit-btn" onclick="location.href='hal_user_edit.html'">Edit Profile</button>
+    </div>
+
+    <div class="profile-tabs">
+      <a href="#" class="tab-link active" data-tab="history">History</a>
+      <a href="#" class="tab-link" data-tab="wishlist">Wishlist</a>
+      <a href="#" class="tab-link" data-tab="recommendations">Recommendations</a>
+    </div>
+
+    <div id="tabContent" class="tab-content">
+      <div class="movie-grid active" id="history">
+        <div class="movie-card"><img src="../Homepage/assets/movies/interstellar.jpg"><p>Interstellar</p></div>
+        <div class="movie-card"><img src="../Homepage/assets/movies/dune3.webp"><p>Dune Part Two</p></div>
+        <div class="movie-card"><img src="../Homepage/assets/movies/avatar2.webp"><p>Avatar 2</p></div>
+      </div>
+
+      <div class="movie-grid" id="wishlist">
+        <div class="movie-card"><img src="../Homepage/assets/movies/spiderman.webp"><p>Spiderman</p></div>
+        <div class="movie-card"><img src="../Homepage/assets/movies/guardians.webp"><p>Guardians</p></div>
+        <div class="movie-card"><img src="../Homepage/assets/movies/inception.jpg"><p>Inception</p></div>
+      </div>
+
+      <div class="movie-grid" id="recommendations">
+        <div class="movie-card"><img src="../Homepage/assets/movies/blackpanther.webp"><p>Black Panther</p></div>
+        <div class="movie-card"><img src="../Homepage/assets/movies/interstellar.jpg"><p>Interstellar</p></div>
+        <div class="movie-card"><img src="../Homepage/assets/movies/dune3.webp"><p>Dune</p></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 CINEWAVE. Watch. Discuss. Enjoy.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

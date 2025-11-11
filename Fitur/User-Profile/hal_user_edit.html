@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CINEWAVE | Edit Profile</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo">CINE<span class="accent">WAVE</span></div>
+    <nav class="nav">
+      <a href="../Homepage/index.html" class="nav-link">Home</a>
+      <a href="#">Movies</a>
+      <a href="#">TV Series</a>
+      <a href="#">Trending</a>
+      <a href="#">Watchlist</a>
+
+      <div class="avatar-dropdown">
+        <img src="assets/user_001.png" alt="User Profile" class="user-avatar" id="topAvatar" />
+        <div class="dropdown-menu" id="avatarDropdown">
+          <a href="hal_user_settings.html">Settings</a>
+          <a href="#">Log Out</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="edit-container">
+    <h2>Edit Profile</h2>
+    <form id="editForm" class="edit-form">
+      <div class="form-group">
+        <label for="avatar">Profile Picture</label>
+        <div class="upload-area">
+          <img id="previewImg" src="assets/user_001.png" alt="Profile Preview" />
+          <input type="file" id="avatar" accept="image/*" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" value="User" />
+      </div>
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" value="@user_666" />
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="save-btn">Save Changes</button>
+        <button type="button" class="cancel-btn" onclick="location.href='hal_user.html'">Cancel</button>
+      </div>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 CINEWAVE. Watch. Discuss. Enjoy.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
